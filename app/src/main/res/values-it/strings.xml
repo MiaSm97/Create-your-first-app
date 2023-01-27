@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Crea la tua prima App</string>
+    <string name="action_settings">Impostazioni</string>
+
+    <string name="first_fragment_label">Primo Fragment</string>
+    <string name="second_fragment_label">Secondo Fragment</string>
+    <string name="next">Avanti</string>
+    <string name="previous">Precedente</string>
+
+    <string name="hello_first_fragment">Ciao primo fragment</string>
+    <string name="go_to_first">Vai al primo</string>
+    <string name="go_to_third">Vai al terzo</string>
+    <string name="Welcome">Benvenuto</string>
+    <string name="hello_second_fragment">Ciao secondo fragment. Arg: %1$s</string>
+    <string name="ciao">Ciao</string>
+    <string name="third_fragment_label">Terzo Fragment</string>
+    <string name="Back">Indietro</string>
+    <string name="choice">Fai la tua scelta</string>
+    <string name="End">Fine</string>
+</resources>

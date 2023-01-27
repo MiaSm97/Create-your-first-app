@@ -1,19 +1,19 @@
 package com.example.createyourfirstapp
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.createyourfirstapp.databinding.FragmentSecondBinding
+import com.example.createyourfirstapp.databinding.FragmentThirdBinding
 
 /**
- * A simple [Fragment] subclass as the second destination in the navigation.
+ * A simple [Fragment] subclass as the third destination in the navigation.
  */
-class SecondFragment : Fragment() {
+class ThirdFragment : Fragment() {
 
-private var _binding: FragmentSecondBinding? = null
+private var _binding: FragmentThirdBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -23,7 +23,7 @@ private var _binding: FragmentSecondBinding? = null
         savedInstanceState: Bundle?
     ): View? {
 
-      _binding = FragmentSecondBinding.inflate(inflater, container, false)
+      _binding = FragmentThirdBinding.inflate(inflater, container, false)
       return binding.root
 
     }
@@ -31,12 +31,8 @@ private var _binding: FragmentSecondBinding? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.goToFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
-        }
-
-        binding.goToThird.setOnClickListener {
-            findNavController().navigate(R.id.action_SecondFragment_to_ThirdFragment)
+        binding.buttonThird.setOnClickListener {
+            findNavController().navigate(R.id.action_ThirdFragment_to_SecondFragment)
         }
     }
 override fun onDestroyView() {
