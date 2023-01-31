@@ -13,6 +13,8 @@ import com.example.createyourfirstapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    val cities = listOf(City("Rome"), City("Berlin"), City("New York"), City("London"))
+
     private lateinit var appBarConfiguration: AppBarConfiguration
 private lateinit var binding: ActivityMainBinding
 

@@ -4,17 +4,18 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="third_fragment_label">Third Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
     <string name="go_to_first">Go to First</string>
     <string name="go_to_third">Go to Third</string>
     <string name="Welcome">Welcome</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="ciao">Ciao</string>
-    <string name="third_fragment_label">Third Fragment</string>
     <string name="Back">Back</string>
-    <string name="choice">Make your choice </string>
+    <string name="log">Login </string>
     <string name="End">The End </string>
+    <string name="insert_your_email">Insert your email</string>
+    <string name="insert_your_password">Insert your password</string>
+    <string name="your_social_network">Your social network</string>
+    <string name="access">Your credential</string>
+    <string name="email_not_valid">Email not valid</string>
 </resources>

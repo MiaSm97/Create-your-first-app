@@ -1,9 +1,11 @@
 package com.example.createyourfirstapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.createyourfirstapp.databinding.FragmentThirdBinding
@@ -30,6 +32,12 @@ private var _binding: FragmentThirdBinding? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.hint.doOnTextChanged { text, start, before, count ->
+            Log.v("Third Activity", "edit text values: text = $text, start = $start, before = $before, count = $count")
+            text?.let { binding.buttonThird.isEnabled = (it.length >= 8) && it.contains("#") }
+
+        }
 
         binding.buttonThird.setOnClickListener {
             findNavController().navigate(R.id.action_ThirdFragment_to_SecondFragment)
