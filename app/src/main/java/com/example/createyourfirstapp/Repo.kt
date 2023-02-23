@@ -1,5 +1,5 @@
 package com.example.createyourfirstapp
 
-data class Cocktail(val drink : String){
+data class Repo(val id : String, val name : String ){
 
 }
