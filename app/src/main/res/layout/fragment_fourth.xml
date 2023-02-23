@@ -15,5 +15,16 @@
     app:layout_constraintBottom_toBottomOf="parent"
     tools:listitem="@layout/city_item_list" />
 
+    <Button
+        android:id="@+id/go_to_fifth"
+        android:text="@string/next"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/Default.Bottom"
+        />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.createyourfirstapp.databinding.FragmentFourthBinding
@@ -13,6 +14,9 @@ import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 
 
+/**
+ * A simple [Fragment] subclass as the fourth destination in the navigation.
+ */
 class FourthFragment : Fragment() {
 
     val cities = listOf(City("Rome"), City("Berlin"), City("New York"), City("London"))
@@ -42,6 +46,9 @@ class FourthFragment : Fragment() {
         val adapter = CityAdapter(cities)
         binding.cityList.adapter = adapter
         binding.cityList.layoutManager = LinearLayoutManager(context)
+        binding.goToFifth.setOnClickListener {
+            findNavController().navigate(R.id.action_fourthFragment_to_FifthFragment)
+        }
         viewLifecycleOwner.lifecycleScope.launch {
             val repo = gitHubService.listRepos("MiaSm97")
             Log.d("Fourth Fragment", "Repo size: $repo")
