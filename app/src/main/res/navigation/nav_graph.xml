@@ -43,7 +43,18 @@
         android:name="com.example.createyourfirstapp.FourthFragment"
         android:label="FourthFragment"
         tools:layout="@layout/fragment_fourth">
-
+        <action
+            android:id="@+id/action_fourthFragment_to_FifthFragment"
+            app:destination="@id/FifthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FifthFragment"
+        android:name="com.example.createyourfirstapp.FifthFragment"
+        android:label="@string/fifth_fragment"
+        tools:layout="@layout/fragment_fifth" >
+        <action
+            android:id="@+id/action_FifthFragment_to_FirstFragment"
+            app:destination="@+id/FirstFragment" />
     </fragment>
 
 </navigation>

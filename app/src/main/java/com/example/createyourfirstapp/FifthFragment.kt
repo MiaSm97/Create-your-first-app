@@ -1,20 +1,22 @@
 package com.example.createyourfirstapp
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.createyourfirstapp.databinding.FragmentSecondBinding
+import com.example.createyourfirstapp.databinding.FragmentFifthBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 
 class FifthFragment : Fragment() {
     private var _binding: FragmentFifthBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private var currentNumber = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,13 +34,23 @@ class FifthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.goToFourth.setOnClickListener {
-            findNavController().navigate(R.id.)
+        binding.goToForth.setOnClickListener {
+            findNavController().navigate(R.id.action_FifthFragment_to_FirstFragment)
         }
 
-        binding.buttonSecond.setOnClickListener {
-
+        binding.tap.setOnClickListener {
+            runBlocking {
+                valueFirst()
+            }
         }
+    }
+
+    suspend fun valueFirst() {
+        delay(2000)
+        val number = binding.hintNum.text.toString().toInt()
+        val result = number + 1 + currentNumber
+        currentNumber++
+        binding.helloWorld.text = result.toString()
     }
     override fun onDestroyView() {
         super.onDestroyView()

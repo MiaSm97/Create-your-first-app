@@ -40,27 +40,6 @@ private var _binding: FragmentFirstBinding? = null
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
 
-        viewLifecycleOwner.lifecycleScope.launchWhenResumed {
-            val firstString = welcome()
-            val secondString = nextScreen()
-            printString(firstString, secondString)
-        }
-    }
-
-    suspend fun welcome() : String {
-        delay(1000)
-        return "Welcome!"
-    }
-    suspend fun nextScreen() : String {
-        delay(2000)
-        return "Please, go to the next screen"
-    }
-
-    fun printString(value1 : String?, value2: String? ){
-        if (value1 != null && value2 != null)
-            Log.v("Main Activity", "$value1. $value2")
-        binding.textviewFirst.text = "$value1 $value2"
-
     }
 
 

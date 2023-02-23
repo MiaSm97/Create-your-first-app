@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.createyourfirstapp.databinding.FragmentFourthBinding
 
@@ -38,6 +39,9 @@ class FourthFragment : Fragment() {
         val adapter = CityAdapter(cities)
         binding.cityList.adapter = adapter
         binding.cityList.layoutManager = LinearLayoutManager(context)
+        binding.goToFifth.setOnClickListener {
+            findNavController().navigate(R.id.action_fourthFragment_to_FifthFragment)
+        }
     }
 
 

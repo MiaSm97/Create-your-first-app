@@ -18,4 +18,7 @@
     <string name="your_social_network">Il tuo social network</string>
     <string name="access">I tuoi dati</string>
     <string name="email_not_valid">Email non valida</string>
+    <string name="fifth_fragment">Quinto fragment</string>
+    <string name="write">scrivi un numero</string>
+    <string name="tap">premi</string>
 </resources>
