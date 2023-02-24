@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.createyourfirstapp.databinding.FragmentFourthBinding
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 /**
@@ -21,8 +22,10 @@ class FourthFragment : Fragment() {
 
     val cities = listOf(City("Rome"), City("Berlin"), City("New York"), City("London"))
 
-    val retrofit = Retrofit.Builder().baseUrl("https://api.github.com").build()
-    val gitHubService = retrofit.create(GitHubService::class.java)
+    val retrofit = Retrofit.Builder().baseUrl("www.thecocktaildb.com").addConverterFactory(
+        GsonConverterFactory.create()
+    ).build()
+    val cocktailService = retrofit.create(CocktailService::class.java)
 
 
     private var _binding: FragmentFourthBinding? = null
@@ -30,6 +33,7 @@ class FourthFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,8 +54,8 @@ class FourthFragment : Fragment() {
             findNavController().navigate(R.id.action_fourthFragment_to_FifthFragment)
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            val repo = gitHubService.listRepos("MiaSm97")
-            Log.d("Fourth Fragment", "Repo size: $repo")
+            val cocktail = cocktailService.listCocktail("Margarita")
+            Log.d("Fourth Fragment", "Cocktail name: $cocktail")
         }
     }
 
