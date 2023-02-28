@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
+    app:startDestination="@id/fourthFragment">
 
     <fragment
         android:id="@+id/FirstFragment"
@@ -53,8 +53,8 @@
         android:label="@string/fifth_fragment"
         tools:layout="@layout/fragment_fifth" >
         <action
-            android:id="@+id/action_FifthFragment_to_FirstFragment"
-            app:destination="@+id/FirstFragment" />
+            android:id="@+id/action_FifthFragment_to_fourthFragment"
+            app:destination="@+id/fourthFragment" />
     </fragment>
 
 </navigation>

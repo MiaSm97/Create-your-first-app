@@ -1,3 +1,3 @@
 package com.example.createyourfirstapp
 
-data class City(val name : String)
+data class PokemonType(val name : String)

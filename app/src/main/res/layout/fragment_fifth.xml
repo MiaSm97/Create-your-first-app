@@ -41,7 +41,7 @@
         />
 
     <Button
-        android:id="@+id/go_to_forth"
+        android:id="@+id/go_to_fourth"
         android:text="@string/Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

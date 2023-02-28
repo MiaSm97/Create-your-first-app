@@ -6,12 +6,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
-        android:id="@+id/city_name"
+        android:id="@+id/pokemon_type"
         style="@style/Default"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Rome"
+        tools:text="Fire"
+        android:layout_marginBottom="@dimen/cardview_default_elevation"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,8 +34,8 @@ class FifthFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.goToForth.setOnClickListener {
-            findNavController().navigate(R.id.action_FifthFragment_to_FirstFragment)
+        binding.goToFourth.setOnClickListener {
+            findNavController().navigate(R.id.action_FifthFragment_to_fourthFragment)
         }
 
         binding.tap.setOnClickListener {

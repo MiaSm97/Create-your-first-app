@@ -8,24 +8,24 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ViewHolder(view: View): RecyclerView.ViewHolder(view){
 
-    val cityName: TextView
+    val pokemonType: TextView
     init {
-        cityName = view.findViewById(R.id.city_name)
+        pokemonType = view.findViewById(R.id.pokemon_type)
     }
 }
 
-class CityAdapter(val cities: List<City>): RecyclerView.Adapter<ViewHolder>() {
+class PokemonAdapter(val pokemon: List<PokemonTypesItem>): RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val cityView = LayoutInflater.from(parent.context).inflate(R.layout.city_item_list, parent, false)
-        return ViewHolder(cityView)
+        val pokemonView = LayoutInflater.from(parent.context).inflate(R.layout.pokemon_item_list, parent, false)
+        return ViewHolder(pokemonView)
     }
 
     override fun getItemCount(): Int {
-        return cities.size
+        return pokemon.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.cityName.text = cities[position].name
+        holder.pokemonType.text = pokemon[position].toString()
     }
 }
