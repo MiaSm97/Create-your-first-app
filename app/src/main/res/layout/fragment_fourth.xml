@@ -7,6 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pokemon_type_list"
         android:layout_height="match_parent"
@@ -15,16 +16,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/pokemon_item_list" />
-
-    <Button
-        android:id="@+id/go_to_fifth"
-        android:text="@string/next"
-        app:layout_constraintBottom_toBottomOf="@id/pokemon_type_list"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Default.Bottom"
+        tools:listitem="@layout/pokemon_item_list"
         />
+
 
 
 

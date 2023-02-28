@@ -6,18 +6,20 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ViewHolder(view: View): RecyclerView.ViewHolder(view){
+class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     val pokemonType: TextView
+
     init {
         pokemonType = view.findViewById(R.id.pokemon_type)
     }
 }
 
-class PokemonAdapter(val pokemon: List<PokemonTypesItem>): RecyclerView.Adapter<ViewHolder>() {
+class PokemonAdapter(val pokemon: List<PokemonTypesItem>) : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val pokemonView = LayoutInflater.from(parent.context).inflate(R.layout.pokemon_item_list, parent, false)
+        val pokemonView =
+            LayoutInflater.from(parent.context).inflate(R.layout.pokemon_item_list, parent, false)
         return ViewHolder(pokemonView)
     }
 
@@ -27,5 +29,7 @@ class PokemonAdapter(val pokemon: List<PokemonTypesItem>): RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.pokemonType.text = pokemon[position].toString()
+        holder.pokemonType.text =
+            "POKEMON ${pokemon[position].pokemon_id} - NAME: ${pokemon[position].pokemon_name}, TYPE: ${pokemon[position].type}"
     }
 }
