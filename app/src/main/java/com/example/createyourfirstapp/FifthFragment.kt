@@ -5,27 +5,37 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.createyourfirstapp.databinding.FragmentFifthBinding
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class FifthFragment : Fragment() {
+
     private var _binding: FragmentFifthBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private var currentNumber = 0
+    val retrofit: Retrofit = Retrofit.Builder()
+        .baseUrl("https://dog.ceo")
+        .addConverterFactory(GsonConverterFactory.create()).build()
+
+    val apiService: DogService = retrofit.create(DogService::class.java)
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
+
+
         _binding = FragmentFifthBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
 
@@ -38,19 +48,33 @@ class FifthFragment : Fragment() {
             findNavController().navigate(R.id.action_FifthFragment_to_fourthFragment)
         }
 
-        binding.tap.setOnClickListener {
-            runBlocking {
-                valueFirst()
-            }
-        }
+        retryCall()
     }
 
-    suspend fun valueFirst() {
-        delay(2000)
-        val number = binding.hintNum.text.toString().toInt()
-        val result = number + 1 + currentNumber
-        currentNumber++
-        binding.helloWorld.text = result.toString()
+    fun retryCall() {
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val details = apiService.getDetails()
+                setDetails(details)
+
+            } catch (e: Exception) {
+
+                Snackbar.make(
+                    requireActivity().findViewById(R.id.main_view),
+                    "Error",
+                    Snackbar.LENGTH_LONG
+                ).setAction("retry") {
+                    retryCall()
+                }.show()
+
+            }
+        }
+
+    }
+
+    fun setDetails(dog: Dog){
+        binding.breed.text = getString(R.string.breed, dog.message.australian)
     }
     override fun onDestroyView() {
         super.onDestroyView()

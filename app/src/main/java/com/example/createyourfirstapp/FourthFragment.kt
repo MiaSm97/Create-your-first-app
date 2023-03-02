@@ -25,26 +25,26 @@ class FourthFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
     val authorizationInterceptor = AuthorizationInterceptor()
-
     val logging = HttpLoggingInterceptor()
-
     val client: OkHttpClient = OkHttpClient.Builder()
         .addInterceptor(logging).addInterceptor(authorizationInterceptor)
         .build()
-
     val retrofit: Retrofit = Retrofit.Builder().client(client)
         .baseUrl("https://pokemon-go1.p.rapidapi.com")
         .addConverterFactory(GsonConverterFactory.create()).build()
-
     val apiService: PokemonService = retrofit.create(PokemonService::class.java)
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
 
         _binding = FragmentFourthBinding.inflate(inflater, container, false)
+
         logging.level = HttpLoggingInterceptor.Level.BODY
+
         return binding.root
 
 

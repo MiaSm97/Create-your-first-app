@@ -21,5 +21,5 @@
     <string name="fifth_fragment">fifth fragment</string>
     <string name="write">write a number</string>
     <string name="tap">tap</string>
-    <string name="hello_world">HELLO WORLD</string>
+    <string name="breed">breed: %s</string>
 </resources>

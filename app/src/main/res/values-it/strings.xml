@@ -21,4 +21,5 @@
     <string name="fifth_fragment">Quinto fragment</string>
     <string name="write">scrivi un numero</string>
     <string name="tap">premi</string>
+    <string name="breed">razza: %s</string>
 </resources>
