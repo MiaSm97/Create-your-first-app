@@ -7,13 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.createyourfirstapp.databinding.FragmentFifthBinding
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class FifthFragment : Fragment() {
 
@@ -46,7 +41,7 @@ class FifthFragment : Fragment() {
         viewModel.dogApi()
     }
 
-    fun retryCall() {
+    private fun retryCall() {
 
         viewModel.dog2.observe(viewLifecycleOwner) {
             setDetails(it)
@@ -62,7 +57,7 @@ class FifthFragment : Fragment() {
 
     }
 
-    fun setDetails(dog: Dog) {
+    private fun setDetails(dog: Dog) {
         binding.breed.text = getString(R.string.breed, dog.message.australian)
     }
 
