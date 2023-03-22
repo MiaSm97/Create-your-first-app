@@ -55,9 +55,6 @@ class FourthFragment : Fragment() {
         showPokemon(PokemonTypes())
         retryCall()
 
-        binding.goToFifth.setOnClickListener {
-            findNavController().navigate(R.id.action_fourthFragment_to_FifthFragment)
-        }
     }
 
 

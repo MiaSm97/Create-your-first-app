@@ -17,15 +17,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/pokemon_item_list" />
 
-    <Button
-        android:id="@+id/go_to_fifth"
-        android:text="@string/next"
-        app:layout_constraintBottom_toBottomOf="@id/pokemon_type_list"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Default.Bottom"
-        />
-
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
