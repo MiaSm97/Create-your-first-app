@@ -9,12 +9,8 @@ import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainViewModel : ViewModel() {
-    private val retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://dog.ceo")
-        .addConverterFactory(GsonConverterFactory.create()).build()
+class MainViewModel(private val apiService: DogService) : ViewModel() {
 
-    private val apiService: DogService = retrofit.create(DogService::class.java)
     private var dog = MutableLiveData<Dog>()
     val dog2 : LiveData<Dog>
     get() = dog

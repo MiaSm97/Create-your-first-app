@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.createyourfirstapp.databinding.FragmentFifthBinding
 
@@ -23,8 +22,8 @@ class FifthFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         _binding = FragmentFifthBinding.inflate(inflater, container, false)
+        viewModel = (requireActivity().applicationContext as App).mainViewModelFactory.create(MainViewModel::class.java)
         return binding.root
     }
 
