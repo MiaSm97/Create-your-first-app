@@ -1,4 +1,4 @@
-package com.example.createyourfirstapp
+package com.example.createyourfirstapp.ui
 
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
@@ -9,7 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
-import androidx.lifecycle.ViewModelProvider
+import com.example.createyourfirstapp.R
 import com.example.createyourfirstapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.createyourfirstapp
+package com.example.createyourfirstapp.pokemondtos
 
 data class PokemonTypesItem(
     val pokemon_id: Int,

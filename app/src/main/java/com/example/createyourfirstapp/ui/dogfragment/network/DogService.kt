@@ -1,5 +1,6 @@
-package com.example.createyourfirstapp
+package com.example.createyourfirstapp.ui.dogfragment.network
 
+import com.example.createyourfirstapp.dogdtos.Dog
 import retrofit2.http.GET
 
 interface DogService {

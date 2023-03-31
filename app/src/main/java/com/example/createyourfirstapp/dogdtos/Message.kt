@@ -1,4 +1,4 @@
-package com.example.createyourfirstapp
+package com.example.createyourfirstapp.dogdtos
 
 data class Message(
     val affenpinscher: List<String>,

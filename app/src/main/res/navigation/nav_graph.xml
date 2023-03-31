@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FifthFragment">
+    app:startDestination="@id/fourthFragment">
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.example.createyourfirstapp.FirstFragment"
+        android:name="com.example.createyourfirstapp.ui.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first" >
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.example.createyourfirstapp.SecondFragment"
+        android:name="com.example.createyourfirstapp.ui.SecondFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_second" >
 
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/ThirdFragment"
-        android:name="com.example.createyourfirstapp.ThirdFragment"
+        android:name="com.example.createyourfirstapp.ui.ThirdFragment"
         android:label="@string/third_fragment_label"
         tools:layout="@layout/fragment_third" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/fourthFragment"
-        android:name="com.example.createyourfirstapp.FourthFragment"
+        android:name="com.example.createyourfirstapp.ui.pokemonfragment.PokemonFragment"
         android:label="FourthFragment"
         tools:layout="@layout/fragment_fourth">
         <action
@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/FifthFragment"
-        android:name="com.example.createyourfirstapp.FifthFragment"
+        android:name="com.example.createyourfirstapp.ui.dogfragment.DogFragment"
         android:label="@string/fifth_fragment"
         tools:layout="@layout/fragment_fifth" >
         <action

@@ -1,4 +1,4 @@
-package com.example.createyourfirstapp
+package com.example.createyourfirstapp.ui.pokemonfragment.network
 
 import okhttp3.Interceptor
 import okhttp3.Response

@@ -1,4 +1,4 @@
-package com.example.createyourfirstapp
+package com.example.createyourfirstapp.ui.dogfragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,23 +7,27 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.createyourfirstapp.App
+import com.example.createyourfirstapp.R
 import com.example.createyourfirstapp.databinding.FragmentFifthBinding
+import com.example.createyourfirstapp.dogdtos.Dog
 
-class FifthFragment : Fragment() {
+class DogFragment : Fragment() {
 
     private var _binding: FragmentFifthBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-    private lateinit var viewModel: MainViewModel
+    private lateinit var viewModel: DogViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentFifthBinding.inflate(inflater, container, false)
-        viewModel = (requireActivity().applicationContext as App).mainViewModelFactory.create(MainViewModel::class.java)
+        viewModel = (requireActivity().applicationContext as App).dogViewModelFactory.create(
+            DogViewModel::class.java)
         return binding.root
     }
 
