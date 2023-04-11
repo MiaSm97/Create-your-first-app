@@ -41,23 +41,30 @@ class DogFragment : Fragment() {
         }
 
         retryCall()
-        viewModel.dogApi()
+        viewModel.getDogApi(GetDogs.SetDogsBreed("australian"))
     }
 
     private fun retryCall() {
 
         viewModel.dog2.observe(viewLifecycleOwner) {
-            setDetails(it)
+            when(it){
+                is DogResults.Results -> setDetails(it.dog)
+                is DogResults.Error -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Error",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                is DogResults.CheckPreferences -> {
+                    Toast.makeText(
+                        requireContext(),
+                        "Dogs Breeds",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
         }
-
-        viewModel.error2.observe(viewLifecycleOwner) {
-            Toast.makeText(
-                requireContext(),
-                "Error",
-                Toast.LENGTH_LONG
-            ).show()
-        }
-
     }
 
     private fun setDetails(dog: Dog) {

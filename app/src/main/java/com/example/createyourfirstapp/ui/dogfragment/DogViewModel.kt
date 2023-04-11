@@ -1,5 +1,6 @@
 package com.example.createyourfirstapp.ui.dogfragment
 
+import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,23 +11,39 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DogViewModel(private val dogProvider: DogProvider) : ViewModel() {
+class DogViewModel(private val dogProvider: DogProvider, private val preferences: SharedPreferences) : ViewModel() {
 
-    private var dog = MutableLiveData<Dog>()
-    val dog2 : LiveData<Dog>
+    private var dog = MutableLiveData<DogResults>()
+    val dog2 : LiveData<DogResults>
     get() = dog
 
-    private var error = MutableLiveData<String>()
-    val error2 : LiveData<String>
-    get() = error
+    init {
+        checkPreferences(preferences)
+    }
 
-    fun dogApi(){
+    private fun checkPreferences(preferences: SharedPreferences){
+        val firstTimePreferences = preferences.getBoolean(KEY_PREFERENCES, true)
+        if(firstTimePreferences){
+            preferences.edit().putBoolean(KEY_PREFERENCES, false).apply()
+            dog.value = DogResults.CheckPreferences
+        }
+    }
+    private fun dogApi(){
         CoroutineScope(Dispatchers.Main).launch {
             try{
-            dog.value = dogProvider.setDetails()
+            dog.value = DogResults.Results(dogProvider.setDetails())
         }catch (e: Exception){
-        error.value = e.localizedMessage
+            dog.value = e.localizedMessage?.let { DogResults.Error(it) }
         }
         }
     }
+
+    fun getDogApi(setDog: GetDogs){
+        when(setDog){
+            is GetDogs.SetDogsBreed -> dogApi()
+        }
+    }
+
 }
+
+const val KEY_PREFERENCES = "check_preferences"
