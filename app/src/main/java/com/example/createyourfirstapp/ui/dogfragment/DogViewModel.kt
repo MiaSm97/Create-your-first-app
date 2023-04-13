@@ -11,7 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class DogViewModel(private val dogProvider: DogProvider, private val preferences: SharedPreferences) : ViewModel() {
+class DogViewModel(private val dogProvider: DogProvider, preferences: SharedPreferences) : ViewModel() {
 
     private var dog = MutableLiveData<DogResults>()
     val dog2 : LiveData<DogResults>
