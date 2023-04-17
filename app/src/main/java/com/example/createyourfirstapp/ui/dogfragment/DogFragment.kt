@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.createyourfirstapp.App
 import com.example.createyourfirstapp.R
 import com.example.createyourfirstapp.databinding.FragmentFifthBinding
 import com.example.createyourfirstapp.dogdtos.Dog
+import kotlinx.coroutines.launch
 
 class DogFragment : Fragment() {
 
@@ -45,26 +47,29 @@ class DogFragment : Fragment() {
     }
 
     private fun retryCall() {
+        lifecycleScope.launch {
 
-        viewModel.dog2.observe(viewLifecycleOwner) {
-            when(it){
-                is DogResults.Results -> setDetails(it.dog)
-                is DogResults.Error -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Error",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-                is DogResults.CheckPreferences -> {
-                    Toast.makeText(
-                        requireContext(),
-                        "Dogs Breeds",
-                        Toast.LENGTH_LONG
-                    ).show()
+            viewModel.dog.collect {
+                when(it){
+                    is DogResults.Results -> setDetails(it.dog)
+                    is DogResults.Error -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "Error",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                    is DogResults.CheckPreferences -> {
+                        Toast.makeText(
+                            requireContext(),
+                            "Dogs Breeds",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }
             }
         }
+
     }
 
     private fun setDetails(dog: Dog) {

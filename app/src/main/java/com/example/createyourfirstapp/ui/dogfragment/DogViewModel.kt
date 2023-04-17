@@ -1,45 +1,46 @@
 package com.example.createyourfirstapp.ui.dogfragment
 
 import android.content.SharedPreferences
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.createyourfirstapp.ui.dogfragment.network.DogService
-import com.example.createyourfirstapp.dogdtos.Dog
+import androidx.lifecycle.viewModelScope
 import com.example.createyourfirstapp.ui.dogfragment.network.DogProvider
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.launch
 
-class DogViewModel(private val dogProvider: DogProvider, preferences: SharedPreferences) : ViewModel() {
+class DogViewModel(private val dogProvider: DogProvider, preferences: SharedPreferences) :
+    ViewModel() {
 
-    private var dog = MutableLiveData<DogResults>()
-    val dog2 : LiveData<DogResults>
-    get() = dog
+    val dog = MutableSharedFlow<DogResults>()
 
     init {
         checkPreferences(preferences)
     }
 
-    private fun checkPreferences(preferences: SharedPreferences){
+    private fun checkPreferences(preferences: SharedPreferences) {
         val firstTimePreferences = preferences.getBoolean(KEY_PREFERENCES, true)
-        if(firstTimePreferences){
+        if (firstTimePreferences) {
             preferences.edit().putBoolean(KEY_PREFERENCES, false).apply()
-            dog.value = DogResults.CheckPreferences
-        }
-    }
-    private fun dogApi(){
-        CoroutineScope(Dispatchers.Main).launch {
-            try{
-            dog.value = DogResults.Results(dogProvider.setDetails())
-        }catch (e: Exception){
-            dog.value = e.localizedMessage?.let { DogResults.Error(it) }
-        }
+            viewModelScope.launch {
+                dog.emit(DogResults.CheckPreferences)
+            }
+
         }
     }
 
-    fun getDogApi(setDog: GetDogs){
-        when(setDog){
+    private fun dogApi() {
+        CoroutineScope(Dispatchers.Main).launch {
+            try {
+                dog.emit(DogResults.Results(dogProvider.setDetails()))
+            } catch (e: Exception) {
+                e.localizedMessage?.let { DogResults.Error(it) }?.let { dog.emit(it) }
+            }
+        }
+    }
+
+    fun getDogApi(setDog: GetDogs) {
+        when (setDog) {
             is GetDogs.SetDogsBreed -> dogApi()
         }
     }
