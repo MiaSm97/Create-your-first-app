@@ -22,15 +22,14 @@ class DogViewModel(private val dogProvider: DogProvider, preferences: SharedPref
         val firstTimePreferences = preferences.getBoolean(KEY_PREFERENCES, true)
         if (firstTimePreferences) {
             preferences.edit().putBoolean(KEY_PREFERENCES, false).apply()
-            viewModelScope.launch {
+            CoroutineScope(Dispatchers.Main).launch {
                 dog.emit(DogResults.CheckPreferences)
             }
-
         }
     }
 
     private fun dogApi() {
-        CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch {
             try {
                 dog.emit(DogResults.Results(dogProvider.setDetails()))
             } catch (e: Exception) {
